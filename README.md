@@ -1,28 +1,39 @@
-# 🔐 Secure Peer-to-Peer Chat Application
+# 🔐 Secure Peer-to-Peer Chat Application (492-Project)
 
-## Overview
+## 📖 Overview
 
-This Java-based project implements a secure peer-to-peer (P2P) chat application. It features:
+This project implements a secure peer-to-peer (P2P) communication system in Java. It demonstrates:
 
-- **Simulated TCP handshake**
-- **RSA-based mutual authentication**
+- A full **TCP-like handshake simulation**
+- **RSA public-key authentication**
 - **Authenticated Diffie-Hellman key exchange**
-- **Custom AES-like CBC encryption**
-- **SHA-256 for message integrity**
-- **Replay attack detection using timestamps**
+- **AES-like encryption in CBC mode** (via XOR for simplicity)
+- **SHA-256 hashing** for message integrity
+- **Replay attack prevention** using timestamps
 
-The application models real-world secure communication protocols and cryptography principles, making it ideal for learning and demonstrating secure messaging over untrusted networks.
+Developed as part of a computer security course, this project simulates real-world secure communication protocols without relying on third-party libraries.
 
 ---
 
 ## 🔧 Features
 
-- **RSA Authentication**: Exchange and verify public keys with digital signatures.
-- **Diffie-Hellman Key Exchange**: Secure session key agreement with authentication tokens.
-- **Custom CBC Encryption**: AES-inspired symmetric encryption using XOR.
-- **SHA-256 Integrity**: Ensures messages have not been altered.
-- **Replay Protection**: Uses timestamps to detect and block replayed messages.
-- **Full-duplex Communication**: Bi-directional encrypted chat.
+- 🔑 **RSA Authentication**  
+  Mutual authentication with digital signatures.
+
+- 🔐 **Diffie-Hellman Key Exchange**  
+  Session keys with RSA-bound authentication tokens.
+
+- 🔄 **Symmetric Encryption (CBC)**  
+  Custom XOR-based AES simulation with IVs.
+
+- ✅ **Message Integrity**  
+  Verified using SHA-256 hashes.
+
+- ⏱️ **Replay Protection**  
+  Timestamps guard against message replays.
+
+- 🔁 **Bi-Directional Messaging**  
+  Simultaneous send/receive via threads.
 
 ---
 
@@ -30,24 +41,27 @@ The application models real-world secure communication protocols and cryptograph
 
 | File                  | Description                                                             |
 |-----------------------|-------------------------------------------------------------------------|
-| `PeerServer.java`     | Listens for incoming connections, acts as the server peer.              |
-| `PeerClient.java`     | Connects to the server peer and initiates the handshake.                |
-| `RSA.java`            | RSA key generation, encryption, decryption, and signature verification. |
-| `AuthenticatedDH.java`| Authenticated Diffie-Hellman implementation with RSA-based tokens.      |
-| `SimpleEncryptor.java`| CBC-mode encryption and decryption using XOR and SHA-256.               |
-| `run_peers.sh`        | Bash script to launch both server and client.                           |
+| `PeerServer.java`     | Server-side peer that waits for connections.                            |
+| `PeerClient.java`     | Client-side peer that initiates connection to the server.               |
+| `RSA.java`            | Custom RSA algorithm (keygen, encrypt/decrypt, sign/verify).            |
+| `AuthenticatedDH.java`| RSA-authenticated Diffie-Hellman key exchange implementation.           |
+| `SimpleEncryptor.java`| AES-inspired CBC-mode encryption/decryption and custom SHA-256 hash.    |
+| `run_peers.sh`        | Shell script to compile and launch both server and client terminals.    |
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Running the Application
 
-### Prerequisites
+### ✅ Prerequisites
 
-- Java 8 or higher
-- Terminal or command line
-- Git (optional)
+- Java 8 or later
+- Bash-compatible shell (macOS/Linux/WSL/Git Bash)
+- Terminal
 
-### Compilation
+### ▶️ Quick Start (Script)
 
 ```bash
-javac FinalProject/*.java
+chmod +x run_peers.sh
+./run_peers.sh
+
+
